@@ -26,7 +26,6 @@ const Contact = () => {
     emailjs.sendForm(serviceId, templateId, form.current, publicKey).then(
       (result) => {
         e.target.reset();
-        console.log(result.text);
         setShowToast(true);
       },
       (error) => {

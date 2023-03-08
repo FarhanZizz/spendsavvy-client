@@ -2,10 +2,10 @@ import React from "react";
 
 const Faq = () => {
   return (
-    <div className="my-10">
+    <div className="my-20">
       <h1 className="text-5xl font-bold mb-10">Frequently Asked Questions</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="collapse rounded collapse-plus ">
+        <div className="collapse rounded collapse-plus">
           <input type="checkbox" />
           <div className="collapse-title text-xl font-medium">
             Can I track my cat's expenses on SpendSavvy?
