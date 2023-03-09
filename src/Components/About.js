@@ -6,7 +6,13 @@ const About = () => {
     <div>
       <div className="hero">
         <div className="hero-content flex-col lg:flex-row">
-          <img src={img} alt="Developer" className="lg:max-w-lg md:max-w-md" />
+          <div className="tooltip" data-tip="Made by Midjouney AI">
+            <img
+              src={img}
+              alt="Developer"
+              className="lg:max-w-lg md:max-w-md"
+            />
+          </div>
           <div>
             <h1 className="text-5xl font-bold">About us</h1>
             <p className="py-6">

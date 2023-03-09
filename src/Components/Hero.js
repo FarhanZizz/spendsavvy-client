@@ -6,7 +6,12 @@ const Hero = () => {
   return (
     <div className="hero  ">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <img src={img} className="lg:max-w-lg md:max-w-md" alt="Pot" />
+        <div
+          className="tooltip tooltip-bottom"
+          data-tip="pexels.com/@scottwebb"
+        >
+          <img src={img} className="lg:max-w-lg md:max-w-md" alt="Pot" />
+        </div>
         <div>
           <h1 className="text-6xl font-bold">Get Savvy with your Spending!</h1>
           <p className="py-6">

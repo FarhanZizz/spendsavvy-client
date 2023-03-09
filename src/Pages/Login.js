@@ -5,7 +5,9 @@ import { BsGoogle } from "react-icons/bs";
 const Login = () => {
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-      <img src={img} alt="hero" />
+      <div className="tooltip tooltip-bottom" data-tip="Made by Midjouney AI">
+        <img src={img} alt="hero" />
+      </div>
       <form className="md:w-4/5 mx-auto">
         <h1 className="text-3xl font-bold mb-5 ">Welcome Back</h1>
         <h1 className="text-sm ">You've been missed!</h1>
@@ -44,11 +46,7 @@ const Login = () => {
           Sign in
         </button>
         <div className="divider">OR</div>
-        <button
-          className="btn bg-base-100 hover:bg-base-100 text-primary  w-full"
-          value="Send"
-          type="submit"
-        >
+        <button className="btn bg-base-100 hover:bg-base-100 text-primary  w-full">
           <BsGoogle className="mr-2"></BsGoogle>Sign in with Google
         </button>
         <p className="mt-4 ">
