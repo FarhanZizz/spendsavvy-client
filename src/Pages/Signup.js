@@ -1,16 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import img from "../assets/login-hero.png";
 import { BsGoogle } from "react-icons/bs";
-const Login = () => {
+import { Link } from "react-router-dom";
+import img from "../assets/signup-hero.png";
+
+const Signup = () => {
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
       <div className="tooltip tooltip-bottom" data-tip="Made by Midjouney AI">
         <img src={img} alt="hero" />
       </div>
       <form className="md:w-4/5 mx-auto">
-        <h1 className="text-3xl font-bold mb-5 ">Welcome back, captain!</h1>
-        <h1 className="text-sm ">Our ship has been adrift without you.</h1>
+        <h1 className="text-3xl font-bold mb-5 ">Join us today!</h1>
+        <h1 className="text-sm ">Become one of the cool kids on the block.</h1>
         <input
           placeholder="EMAIL"
           className="rounded-none bg-transparent focus:outline-0 input input-ghost border-0 border-b-2 border-b-primary w-full my-4"
@@ -60,4 +61,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
