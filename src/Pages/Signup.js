@@ -1,21 +1,21 @@
-import React, { useContext, useState } from "react";
-import { BsGoogle } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../AuthProvider/AuthProvider";
-import img from "../assets/signup-hero.png";
+import React, { useContext, useState } from "react"
+import { BsGoogle } from "react-icons/bs"
+import { Link, useNavigate } from "react-router-dom"
+import { AuthContext } from "../AuthProvider/AuthProvider"
+import img from "../assets/signup-hero.png"
 
 const Signup = () => {
-  const navigate = useNavigate();
-  const [error, setError] = useState("");
+  const navigate = useNavigate()
+  const [error, setError] = useState("")
   const { singUpWithEmailPassword, updateUser, googleLogin } =
-    useContext(AuthContext);
+    useContext(AuthContext)
 
   const handleEmailPasswordSignUp = async (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const name = form.name.value;
-    const password = form.password.value;
+    event.preventDefault()
+    const form = event.target
+    const email = form.email.value
+    const name = form.name.value
+    const password = form.password.value
 
     try {
       // Send user data to backend to add to database
@@ -25,54 +25,54 @@ const Signup = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, name }),
-      });
+      })
 
       if (!response.ok) {
-        const errorResponse = await response.json(); // parse the response body as JSON
-        const errorMessage = errorResponse.message; // extract the error message
-        throw new Error(errorMessage); // throw the error with the extracted message
+        const errorResponse = await response.json() // parse the response body as JSON
+        const errorMessage = errorResponse.message // extract the error message
+        throw new Error(errorMessage) // throw the error with the extracted message
       }
 
       // Call signup function to register user with email and password
-      await singUpWithEmailPassword(email, password);
+      await singUpWithEmailPassword(email, password)
 
       // Call update function to set user display name
-      await updateUser({ displayName: name });
+      await updateUser({ displayName: name })
 
       // Reset form and navigate to home page on success
-      form.reset();
-      setError("");
-      navigate("/");
+      form.reset()
+      setError("")
+      navigate("/")
     } catch (error) {
-      const errorMessage = error.message;
-      setError(errorMessage);
+      const errorMessage = error.message
+      setError(errorMessage)
     }
-  };
+  }
   const handleGoogle = async () => {
     try {
-      const result = await googleLogin();
-      const user = result.user;
+      const result = await googleLogin()
+      const user = result.user
       const newUser = {
         email: user.email,
         name: user.displayName,
-      };
+      }
       const response = await fetch("http://localhost:5000/googleregistration", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newUser),
-      });
+      })
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("Network response was not ok")
       }
       // Reset form and navigate to home page on success
-      setError("");
-      navigate("/");
+      setError("")
+      navigate("/")
     } catch (error) {
-      setError(error.message);
+      setError(error.message)
     }
-  };
+  }
 
   return (
     <section
@@ -139,7 +139,7 @@ const Signup = () => {
         </p>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Signup;
+export default Signup
