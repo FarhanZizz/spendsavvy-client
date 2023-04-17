@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom"
 import { AuthContext } from "../AuthProvider/AuthProvider"
 
 const Navbar = () => {
@@ -7,11 +7,26 @@ const Navbar = () => {
   const navigate = useNavigate()
   const menu = (
     <>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "p-3 border-0 border-b-2 border-b-primary" : "p-3"
+        }
+        to="/"
+      >
+        Home
+      </NavLink>
+
       {user ? (
-        <li>
+        <>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "p-3 border-0 border-b-2 border-b-primary" : "p-3"
+            }
+            to="/dashboard"
+          >
+            Dashboard
+          </NavLink>
+
           <button
             onClick={() => {
               logOut().then(() => navigate("/"))
@@ -19,15 +34,26 @@ const Navbar = () => {
           >
             Logout
           </button>
-        </li>
+        </>
       ) : (
         <>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/signup">Signup</Link>
-          </li>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "p-3 border-0 border-b-2 border-b-primary" : "p-3"
+            }
+            to="/login"
+          >
+            Login
+          </NavLink>
+
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "p-3 border-0 border-b-2 border-b-primary" : "p-3"
+            }
+            to="/signup"
+          >
+            Signup
+          </NavLink>
         </>
       )}
     </>
@@ -54,7 +80,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 rounded-box w-52"
           >
             {menu}
           </ul>

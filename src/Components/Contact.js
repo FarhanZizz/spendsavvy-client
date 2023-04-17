@@ -1,45 +1,45 @@
-import React, { useEffect, useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
+import React, { useEffect, useRef, useState } from "react"
+import emailjs from "@emailjs/browser"
 
 const Contact = () => {
-  const serviceId = process.env.REACT_APP_SERVICE_ID;
-  const templateId = process.env.REACT_APP_TEMPLATE_ID;
-  const publicKey = process.env.REACT_APP_PUBLIC_KEY;
-  const form = useRef();
-  const [showToast, setShowToast] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const serviceId = process.env.REACT_APP_SERVICE_ID
+  const templateId = process.env.REACT_APP_TEMPLATE_ID
+  const publicKey = process.env.REACT_APP_PUBLIC_KEY
+  const form = useRef()
+  const [showToast, setShowToast] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("")
 
   useEffect(() => {
     // Hide the toast after 3 seconds
     const timeoutId = setTimeout(() => {
-      setShowToast(false);
-      setErrorMessage("");
-    }, 3000);
+      setShowToast(false)
+      setErrorMessage("")
+    }, 3000)
 
     // Clean up the timeout when the component unmounts
-    return () => clearTimeout(timeoutId);
-  }, [showToast, errorMessage]);
+    return () => clearTimeout(timeoutId)
+  }, [showToast, errorMessage])
 
   const sendEmail = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     emailjs.sendForm(serviceId, templateId, form.current, publicKey).then(
       (result) => {
-        e.target.reset();
-        setShowToast(true);
+        e.target.reset()
+        setShowToast(true)
       },
       (error) => {
-        setErrorMessage("Error Occured Try Again :(");
+        setErrorMessage("Error Occured Try Again :(")
       }
-    );
-  };
+    )
+  }
   return (
     <section className="my-20  grid grid-cols-1 lg:grid-cols-2 gap-20">
       <div className="">
         <h1 className="text-5xl font-bold mb-5">Contact us</h1>
         <p className="text-xl">
-          Got a question? Need some help? Want to tell me a joke? Go ahead, I'm
-          all ears!
+          Got a question? Need some help? Want to tell us a joke? Go ahead,
+          We're all ears!
         </p>
       </div>
       <form ref={form} onSubmit={sendEmail}>
@@ -89,7 +89,7 @@ const Contact = () => {
         </div>
       )}
     </section>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

@@ -24,10 +24,10 @@ module.exports = {
 
           warning: "#FF6154",
 
-          error: "#DE1C8D",
+          error: "#cc0000",
         },
       },
     ],
   },
   plugins: [require("daisyui")],
-};
+}
